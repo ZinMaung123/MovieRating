@@ -34,6 +34,7 @@ class MovieListView {
     }
 
     render(templates) {  
+        document.documentElement.scrollTop = 0;      
         this.viewport.innerHTML = "";
         for (let template of templates) {        
             this.viewport.innerHTML += template;        

@@ -7,10 +7,14 @@ class MovieListModel extends APIDataModel {
         return this.rootURL + this.upcoming_path.replace("<<api_key>>",key);
     }
 
-    fetchUpcomingMovie(key){
-        return fetch(this.getUpcomingApiUrl(key))
-            .then(res => res.json())
-            .then(data=> data.results);
+    async fetchUpcomingMovie(key){
+        // return fetch(this.getUpcomingApiUrl(key))
+        //     .then(res => res.json())
+        //     .then(data=> data.results);
+
+        const res = await fetch(this.getUpcomingApiUrl(key));
+        const jsonRes = await res.json();
+        return jsonRes.results;
     }
 
    

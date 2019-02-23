@@ -14,10 +14,10 @@
         return 1;
     }
 
-    console.log(functionA());
-    //functionA().then(data => {console.log(data)});
+    console.log("a",functionA());
+    functionA().then(data => {console.log(data)});
 
-    console.log(functionB());
-    //functionB().then(data => {console.log(data)});
+    console.log("b",functionB());
+    functionB().then(data => {console.log(data)});
 
-    console.log(functionC());
+    console.log("c",functionC());

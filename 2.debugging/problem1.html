@@ -7,7 +7,7 @@
 
 <body>
     <script>
-        const RESERVED_KEYWORDS = ['break', 'case', 'catch', 'class', 'const', 'continue',
+        var RESERVED_KEYWORDS = ['break', 'case', 'catch', 'class', 'const', 'continue',
             'debugger', 'default', 'delete', 'do', 'else', 'enum', 'export', 'extends', 'finally',
             'for', 'function', 'if', 'implements', 'import', 'in', 'instanceof', 'interface',
             'let', 'new', 'package', 'private', 'protected', 'public', 'return', 'static',
@@ -15,14 +15,16 @@
             'with', 'yield'
         ];
 
+
         function isReserved(name) {
-            RESERVED_KEYWORDS.forEach(function (reserved) {
-                if (name == reserved) {
-                    return true;
+            let isReserved = false;
+            RESERVED_KEYWORDS.forEach(function(element) {
+                if(element == name){
+                    isReserved = true;
                 }
             });
 
-            return false;
+            return isReserved;
         }
 
         console.log(isReserved('monkey')); // false

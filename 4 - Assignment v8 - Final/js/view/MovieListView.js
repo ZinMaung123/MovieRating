@@ -3,7 +3,14 @@ class MovieListView {
         this.controller = controller;
         this.itemTemplate = document.getElementById("movie-info-template").innerHTML;
         this.viewport = document.getElementById("viewport");
+        this.ratings = document.getElementById("star-wrapper");
+        this.showRatingStar(ratings);
         this.viewport.addEventListener('click',(event)=>this.detailViewBtnListener(event));
+    }
+    showRatingStar(ratings){
+        for(let star = 1; star <= 5; star++){
+			star_wrapper.innerHTML += "<i class='far fa-star' id='empty_star_"+star+"' data-value="+star+"></i>";
+		}
     }
 
     detailViewBtnListener(event){

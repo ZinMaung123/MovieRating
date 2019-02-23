@@ -14,17 +14,29 @@ class Controller {
         this.movieObjects = [];
 
     }
-    init() {
-        this.movieListModel
-            .fetchUpcomingMovie(this.movieListModel.key)
-            .then(data => this.getUpcomingMovieData(data))
-            .then(data => this.displayMovieList(data));
+    async init() {
+        // this.movieListModel
+        //     .fetchUpcomingMovie(this.movieListModel.key)
+        //     .then(data => this.getUpcomingMovieData(data))
+        //     .then(data => this.displayMovieList(data));
+            
+        const jsonData = await this.movieListModel.fetchUpcomingMovie(this.movieListModel.key);
+        const upMov = this.getUpcomingMovieData(jsonData);
+        this.displayMovieList(upMov);
     }
 
-    displayDetail(id) {
+    async displayDetail(id) {
+        // console.log(this.movieItemModel);
+        // const promiseResult = this.movieItemModel.fetchMovieDetail(id, this.movieItemModel.key);
+        // promiseResult.then(data => this.movieDetailView.render(data));
+
         console.log(this.movieItemModel);
-        const promiseResult = this.movieItemModel.fetchMovieDetail(id, this.movieItemModel.key);
-        promiseResult.then(data => this.movieDetailView.render(data));
+        const promiseResult = await this.movieItemModel.fetchMovieDetail(id, this.movieItemModel.key);
+        console.log(promiseResult);
+        this.movieDetailView.render(promiseResult);
+
+
+
     }
 
     displayMovieList(movieObjects) {

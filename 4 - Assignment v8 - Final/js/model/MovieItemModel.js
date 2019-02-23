@@ -7,7 +7,7 @@ class Movie extends APIDataModel{
         this.title = title;
         this.poster = poster;        
         this.overview = overview;
-        this.link =link;        
+        this.link =link;      
     }
     
 
