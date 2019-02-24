@@ -5,8 +5,12 @@ body{
     width: 100%;
     background: rgba(000,000,000,0.5);
 }
-#star-wrapper{
+.card-image{
+    position: relative;
+}
+.fa-heart{
     position: absolute;
+    z-index: 1;
 }
 
 @media screen and (min-width:992px){

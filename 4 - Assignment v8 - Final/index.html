@@ -38,19 +38,15 @@
     <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
+          {{this.favourite}}
           <img src="{{this.poster}}">
           <span class="card-title">{{this.title}}</span>
           <a class="detail-view-button btn-floating halfway-fab waves-effect waves-light red" href="#" data-id={{this.id}}>
-            <i class="material-icons">add</i>
-            
+            <i class="material-icons">add</i>            
           </a>
         </div>
-        <div class="star-wrapper" id="{{this.rateid}}">
-          <i class="far fa-star" id="{{empty_star1}}_1" data-value="1"></i>
-          <i class="far fa-star" id="{{empty_star2}}_2" data-value="2"></i>
-          <i class="far fa-star" id="{{empty_star3}}_3" data-value="3"></i>
-          <i class="far fa-star" id="{{empty_star4}}_4" data-value="4"></i>
-          <i class="far fa-star" id="{{empty_star5}}_5" data-value="5"></i>
+        <div class="star-wrapper" id="{{this.rateId}}">
+          {{this.ratingStars}}
         </div>
         <div class="card-content">
           <p>{{this.overview}}</p>

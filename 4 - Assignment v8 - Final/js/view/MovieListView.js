@@ -28,17 +28,33 @@ class MovieListView {
     }
 
     getItemTemplate(object) {
+        console.log("getItemTemplate"+object.rating);
+        let starContent = "";
+        let favouriteStar = "";
+
+        for(let star = 1; star <= object.rating; star++){
+            starContent += "<i class='fas fa-star' id="+object.id+"_"+star+" data-value="+star+"></i>";
+        }
+        for(let star=1; star <= (5-object.rating); star++){
+            starContent += "<i class='far fa-star' id="+object.id+"_"+star+" data-value="+star+"></i>";
+        }
+
+        if(object.favourite){
+            favouriteStar += "<i class='fas fa-heart' id="+object.id+"_"+fav+"></i>"        
+        }
+        else{
+            favouriteStar += "<i class='far fa-heart' id="+object.id+"_fav></i>"        
+        }
+  
         const result = this.itemTemplate
             .replace("{{this.title}}", object.title)
             .replace("{{this.poster}}", `https://image.tmdb.org/t/p/w400/${object.poster}`)
             .replace("{{this.overview}}", this.getExcerptWords(object.overview))
             .replace("{{this.id}}", object.id)
-            .replace("{{this.rateid}}", object.id)
-            .replace("{{empty_star1}}", object.id)
-            .replace("{{empty_star2}}", object.id)
-            .replace("{{empty_star3}}", object.id)
-            .replace("{{empty_star4}}", object.id)
-            .replace("{{empty_star5}}", object.id);
+            .replace("{{this.rateId}}", object.id)
+            .replace("{{this.favourite}}", favouriteStar)
+            .replace("{{this.ratingStars}}", starContent);
+        
         return result;
     }
 
@@ -60,10 +76,10 @@ class MovieListView {
 
     rateMovie(movieId, ratingValue) {
         console.log("ratingValue" + ratingValue);
-            for(let rate=1; rate <= 5; rate++){
-                const fillStar = document.getElementById(movieId + "_" + rate);
-                fillStar.className="far fa-star";
-            }
+        for(let rate=1; rate <= 5; rate++){
+            const fillStar = document.getElementById(movieId + "_" + rate);
+            fillStar.className="far fa-star";
+        }
         for (let rate = 1; rate <= ratingValue; rate++) {
             const fillStar = document.getElementById(movieId + "_" + rate);
             console.log("fillstar" + fillStar);
@@ -73,7 +89,6 @@ class MovieListView {
                 fillStar.className = "far fa-star";
             }
         }
-
     }
 }
 

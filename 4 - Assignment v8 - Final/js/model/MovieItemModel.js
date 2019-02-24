@@ -1,14 +1,15 @@
 import APIDataModel from "./APIModel.js";
 
 class Movie extends APIDataModel{
-    constructor(id,title,poster,overview,link,rating){
+    constructor(id,title,poster,overview,link,rating, favourite){
         super();
         this.id = id;
         this.title = title;
         this.poster = poster;        
         this.overview = overview;
         this.link =link;
-        this.rating = rating;    
+        this.rating = rating; 
+        this.favourite = favourite;   
     }
 
     setRating(movieId, ratingValue){
